@@ -1,0 +1,16 @@
+{
+  "name": "word-solitaire",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Genre link solitaire browser game",
+  "scripts": {
+    "build:site": "node scripts/build-static.mjs",
+    "build:github-pages": "node scripts/build-static.mjs docs",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2"
+  }
+}

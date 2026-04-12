@@ -9,8 +9,8 @@
   --muted: rgba(243, 240, 229, 0.72);
   --shadow: 0 22px 48px rgba(3, 16, 12, 0.36);
   --card-shadow: 0 16px 28px rgba(8, 17, 14, 0.22);
-  --card-width: 154px;
-  --card-height: 200px;
+  --card-width: 135px;
+  --card-height: 189px;
   --word-accent: rgba(79, 108, 121, 0.62);
   --genre-accent: rgba(204, 153, 49, 0.92);
   --highlight: rgba(255, 217, 122, 0.82);
@@ -1114,8 +1114,8 @@ button {
 
 @media (max-width: 640px) {
   :root {
-    --card-width: 74px;
-    --card-height: 96px;
+    --card-width: 60px;
+    --card-height: 84px;
   }
 
   html,
@@ -1280,7 +1280,7 @@ button {
   }
 
   .tableau-column {
-    min-height: 138px;
+    min-height: 122px;
     padding: 5px;
     gap: 5px;
     border-radius: 12px;
@@ -1316,7 +1316,7 @@ button {
 
   .foundation-slot,
   .column-empty {
-    min-height: 86px;
+    min-height: 76px;
     border-radius: 12px;
   }
 
@@ -1325,14 +1325,14 @@ button {
   }
 
   .foundation-card {
-    min-height: 78px;
-    padding: 8px 6px 10px;
+    min-height: 64px;
+    padding: 7px 5px 8px;
     border-radius: 10px;
   }
 
   .foundation-title {
-    margin: 14px 0 0;
-    font-size: 0.68rem;
+    margin: 11px 0 0;
+    font-size: 0.62rem;
     line-height: 1.05;
     text-align: center;
   }
@@ -1452,7 +1452,7 @@ button {
 
   .stock-stack,
   .waste-slot {
-    min-height: 82px;
+    min-height: 70px;
     border-radius: 12px;
   }
 
@@ -1462,9 +1462,9 @@ button {
   }
 
   .stock-pattern {
-    width: 46px;
-    height: 56px;
-    border-radius: 10px;
+    width: 36px;
+    height: 48px;
+    border-radius: 8px;
   }
 
   .stock-title {

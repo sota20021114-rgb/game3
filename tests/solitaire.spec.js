@@ -60,13 +60,17 @@ test("mobile tap tray appears for a selected card and can clear selection", asyn
   const mobileLayout = await page.evaluate(() => {
     const tableau = document.querySelector("#tableau");
     const foundationRow = document.querySelector("#foundations");
+    const scrollingElement = document.scrollingElement || document.documentElement;
     return {
       tableauColumns: getComputedStyle(tableau).gridTemplateColumns.split(" ").length,
       foundationColumns: getComputedStyle(foundationRow).gridTemplateColumns.split(" ").length,
+      scrollHeight: scrollingElement.scrollHeight,
+      innerHeight: window.innerHeight,
     };
   });
-  expect(mobileLayout.tableauColumns).toBe(2);
-  expect(mobileLayout.foundationColumns).toBe(2);
+  expect(mobileLayout.tableauColumns).toBe(4);
+  expect(mobileLayout.foundationColumns).toBe(4);
+  expect(mobileLayout.scrollHeight).toBeLessThanOrEqual(mobileLayout.innerHeight + 2);
 
   await page.locator(".play-card").first().click();
   await expect(page.locator("#selection-tray")).toHaveAttribute("data-active", "true");

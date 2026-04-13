@@ -605,6 +605,10 @@ button {
   min-height: 54px;
 }
 
+.message:empty {
+  display: none;
+}
+
 .message[data-state="won"] {
   background: rgba(102, 78, 18, 0.24);
   border-color: rgba(255, 217, 122, 0.28);
@@ -1119,15 +1123,22 @@ button {
   }
 
   html,
-  body,
+  body {
+    min-height: 100%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
   #app {
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
+    height: auto;
+    overflow: visible;
   }
 
   .game-shell {
-    height: 100dvh;
     min-height: 100dvh;
+    height: auto;
     padding: 4px;
   }
 
@@ -1135,10 +1146,21 @@ button {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    height: calc(100dvh - 8px);
+    min-height: calc(100dvh - 8px);
+    height: auto;
     padding: 8px;
     border-radius: 18px;
-    overflow: hidden;
+  }
+
+  .table-header-bar {
+    justify-content: flex-end;
+  }
+
+  .brand-block,
+  .level-copy,
+  .zone-head,
+  .zone-head-tight {
+    display: none;
   }
 
   .table-header-bar,
@@ -1190,12 +1212,14 @@ button {
   }
 
   .level-strip {
+    grid-template-columns: 1fr;
     gap: 6px;
+    padding: 6px 8px;
   }
 
   .upper-row {
     grid-template-columns: 1fr;
-    gap: 6px;
+    gap: 4px;
   }
 
   .level-buttons {
@@ -1251,15 +1275,21 @@ button {
 
   .stock-actions {
     justify-content: stretch;
-    margin-top: 6px;
+    margin-top: 4px;
   }
 
   .stock-action-button {
     width: 100%;
-    min-height: 32px;
-    padding: 6px 8px;
+    min-height: 28px;
+    padding: 4px 0;
     border-radius: 10px;
-    font-size: 0.66rem;
+    font-size: 0;
+  }
+
+  .stock-action-button::before {
+    content: "\21BA";
+    font-size: 0.88rem;
+    line-height: 1;
   }
 
   .foundation-zone,
@@ -1461,10 +1491,10 @@ button {
   }
 
   .stock-stack {
-    gap: 4px;
+    gap: 2px;
     width: var(--card-width);
     max-width: 100%;
-    padding: 6px 4px;
+    padding: 4px;
   }
 
   .stock-pattern {
@@ -1483,25 +1513,33 @@ button {
   }
 
   .waste-wrap {
-    gap: 4px;
+    gap: 2px;
   }
 
   .message {
     margin: 0;
-    min-height: 30px;
-    padding: 7px 10px;
+    min-height: 0;
+    padding: 5px 8px;
     border-radius: 12px;
-    font-size: 0.62rem;
-    line-height: 1.3;
+    font-size: 0.56rem;
+    line-height: 1.2;
   }
 
   .tableau-zone {
-    flex: 1 1 auto;
-    min-height: 0;
+    flex: 0 0 auto;
+    min-height: auto;
+    margin-top: 6px;
   }
 
   .stock-waste-row {
     justify-items: center;
+  }
+
+  .stock-title,
+  .stock-meta,
+  .zone-mini-label,
+  .empty-copy {
+    display: none;
   }
 
   .waste-slot,

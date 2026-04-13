@@ -692,7 +692,7 @@ function initGame() {
   state.dragSource = null;
   state.moveCount = 0;
   state.status = "playing";
-  setMessage(buildInitialMessage(level));
+  setMessage("");
 
   startTimer();
   render();

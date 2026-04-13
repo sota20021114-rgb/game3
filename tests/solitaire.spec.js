@@ -60,23 +60,47 @@ test("mobile tap tray appears for a selected card and can clear selection", asyn
   const mobileLayout = await page.evaluate(() => {
     const tableau = document.querySelector("#tableau");
     const foundationRow = document.querySelector("#foundations");
-    const scrollingElement = document.scrollingElement || document.documentElement;
+    const brandBlock = document.querySelector(".brand-block");
+    const stockAction = document.querySelector("#stock-action");
     return {
       tableauColumns: getComputedStyle(tableau).gridTemplateColumns.split(" ").length,
       foundationColumns: getComputedStyle(foundationRow).gridTemplateColumns.split(" ").length,
-      scrollHeight: scrollingElement.scrollHeight,
-      innerHeight: window.innerHeight,
+      bodyOverflowY: getComputedStyle(document.body).overflowY,
+      brandDisplay: getComputedStyle(brandBlock).display,
+      stockActionDisplay: getComputedStyle(stockAction).display,
     };
   });
   expect(mobileLayout.tableauColumns).toBe(4);
   expect(mobileLayout.foundationColumns).toBe(4);
-  expect(mobileLayout.scrollHeight).toBeLessThanOrEqual(mobileLayout.innerHeight + 2);
+  expect(mobileLayout.bodyOverflowY).not.toBe("hidden");
+  expect(mobileLayout.brandDisplay).toBe("none");
+  expect(mobileLayout.stockActionDisplay).toBe("none");
 
   await page.locator(".play-card").first().click();
   await expect(page.locator("#selection-tray")).toHaveAttribute("data-active", "true");
 
   await page.locator("#selection-tray-clear").click();
   await expect(page.locator("#selection-tray")).toHaveAttribute("data-active", "false");
+});
+
+test("mobile portrait can scroll when the board grows taller", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+
+  await page.evaluate(() => {
+    const spacer = document.createElement("div");
+    spacer.id = "mobile-scroll-spacer";
+    spacer.style.height = "420px";
+    document.querySelector(".table-surface").appendChild(spacer);
+  });
+
+  const scrollY = await page.evaluate(async () => {
+    window.scrollTo(0, 260);
+    await new Promise((resolve) => window.requestAnimationFrame(() => window.requestAnimationFrame(resolve)));
+    return window.scrollY;
+  });
+
+  expect(scrollY).toBeGreaterThan(0);
 });
 
 test("mobile touch drag can move a waste card into a foundation slot", async ({ page }) => {

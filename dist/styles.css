@@ -1114,8 +1114,8 @@ button {
 
 @media (max-width: 640px) {
   :root {
-    --card-width: 60px;
-    --card-height: 84px;
+    --card-width: 52px;
+    --card-height: 74px;
   }
 
   html,
@@ -1271,16 +1271,18 @@ button {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     min-width: 0;
     gap: 4px;
+    justify-items: center;
   }
 
   .tableau {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     min-width: 0;
     gap: 4px;
+    justify-items: center;
   }
 
   .tableau-column {
-    min-height: 122px;
+    min-height: 108px;
     padding: 5px;
     gap: 5px;
     border-radius: 12px;
@@ -1288,6 +1290,8 @@ button {
 
   .column-stack {
     gap: 5px;
+    width: 100%;
+    align-items: center;
   }
 
   .column-faceup-pile .play-card {
@@ -1316,7 +1320,7 @@ button {
 
   .foundation-slot,
   .column-empty {
-    min-height: 76px;
+    min-height: 66px;
     border-radius: 12px;
   }
 
@@ -1325,14 +1329,14 @@ button {
   }
 
   .foundation-card {
-    min-height: 64px;
-    padding: 7px 5px 8px;
+    min-height: 54px;
+    padding: 6px 4px 7px;
     border-radius: 10px;
   }
 
   .foundation-title {
-    margin: 11px 0 0;
-    font-size: 0.62rem;
+    margin: 10px 0 0;
+    font-size: 0.56rem;
     line-height: 1.05;
     text-align: center;
   }
@@ -1361,8 +1365,8 @@ button {
   }
 
   .card-face {
-    padding: 6px 6px 7px;
-    border-radius: 10px;
+    padding: 5px 5px 6px;
+    border-radius: 9px;
   }
 
   .card-face::after {
@@ -1375,12 +1379,12 @@ button {
   }
 
   .card-label {
-    font-size: 0.66rem;
+    font-size: 0.56rem;
     line-height: 1.06;
   }
 
   .genre-card .card-label {
-    font-size: 0.72rem;
+    font-size: 0.6rem;
   }
 
   .card-type-dot {
@@ -1395,14 +1399,14 @@ button {
   }
 
   .card-slip {
-    min-height: 22px;
-    padding: 4px 5px;
-    border-radius: 8px;
+    min-height: 18px;
+    padding: 3px 4px;
+    border-radius: 7px;
     gap: 5px;
   }
 
   .card-slip-label {
-    font-size: 0.58rem;
+    font-size: 0.52rem;
     line-height: 1.05;
   }
 
@@ -1452,19 +1456,21 @@ button {
 
   .stock-stack,
   .waste-slot {
-    min-height: 70px;
-    border-radius: 12px;
+    min-height: 62px;
+    border-radius: 10px;
   }
 
   .stock-stack {
     gap: 4px;
-    padding: 8px 6px;
+    width: var(--card-width);
+    max-width: 100%;
+    padding: 6px 4px;
   }
 
   .stock-pattern {
-    width: 36px;
-    height: 48px;
-    border-radius: 8px;
+    width: 28px;
+    height: 38px;
+    border-radius: 6px;
   }
 
   .stock-title {
@@ -1492,6 +1498,28 @@ button {
   .tableau-zone {
     flex: 1 1 auto;
     min-height: 0;
+  }
+
+  .stock-waste-row {
+    justify-items: center;
+  }
+
+  .waste-slot,
+  .play-card,
+  .card-slip,
+  .foundation-card-shell {
+    width: var(--card-width);
+    max-width: 100%;
+  }
+
+  .foundation-card,
+  .column-faceup-pile,
+  .foundation-card-shell {
+    width: 100%;
+  }
+
+  .column-faceup-pile {
+    align-items: center;
   }
 
   .selection-tray {
